@@ -18,18 +18,23 @@ public class MainActivity extends AppCompatActivity {
         FragmentPagerAdapter fragmentPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return new PlacesFragment();
+                if(position==0) return new PlacesFragment();
+                else if(position==1) return new RestaurantsFragment();
+                else if(position==2) return new CafeFragment();
+                else return new BarsFragment();
             }
 
             @Override
             public int getCount() {
-                return 1;
+                return 4;
             }
 
             @Override
             public CharSequence getPageTitle(int position) {
                 if(position==0) return "Places";
-                return super.getPageTitle(position);
+                else if(position==1) return "Restaurants";
+                else if(position==2) return "Cafes";
+                else return "Bars";
             }
         };
         viewPager.setAdapter(fragmentPagerAdapter);
